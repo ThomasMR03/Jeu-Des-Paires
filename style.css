@@ -1,0 +1,29 @@
+body {
+	background-color: #E1CE9A;
+}
+
+#titre {
+	border: 1px solid black;
+	color: #FFFFFF;
+	border-radius: 10px;
+	text-align: center;
+	background-image: url(https://hearthstone.judgehype.com/screenshots/arkentass/news2015/484.jpg);
+	padding: 40px;
+	margin: 15px;
+}
+
+p {
+	text-align: center;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+#photo {
+	margin-left: 125px;
+	margin-right: 100px;
+}
+
+.photo {
+	width: 150px;
+	height: 200px; 
+}
