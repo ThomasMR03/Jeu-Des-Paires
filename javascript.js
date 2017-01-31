@@ -39,6 +39,14 @@ function choisir(carte) { //Choix des cartes quand l'user clique
 	}
 }
 
+function afficherimage() { // Fonction pour afficher les images au chargement de la page
+	for (i=0; i<=img.length-1; i++) { // Boucle qui parcours le tableau d'images
+		document.getElementById('photo').innerHTML += '<img src="img/dos.png" class="photo" onclick="choisir('+i+')" draggable="false">' //A chaque tour, on écrit dans le HTML
+	}
+}
+
+afficherimage(); // Charge la fonction au chargement de la page
+
 function verif() { // Vérifie si une paire a été faite
 	clearInterval(timer);
 	clique = 0;
