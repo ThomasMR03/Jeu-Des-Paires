@@ -29,6 +29,7 @@ function choisir(carte) { //Choix des cartes quand l'user clique
 	if (clique == 0) { //Au premier clique
 		choixun = carte; //On attribue le numéro de la carte choisie au premier choix
 		document.images[carte].src = img[carte]; //Affiche l'image de la carte correspondant au choix
+		document.images[choixun].style.pointerEvents = 'none'; // Désactive l'évènement du clique
 		clique = 1 //On passe le clique à 1
 	}
 	else{ //Au deuxième clique
@@ -53,15 +54,14 @@ function verif() { // Vérifie si une paire a été faite
 	if (img[choixdeux] == img[choixun]) {
 		paires++;
 		document.getElementById("paires").innerHTML = paires;
-		document.images[choixun].removeAttribute('onlick');
 		document.images[choixun].style.opacity = '0.3';
-		document.images[choixun].style.cursor = 'not-allowed';
-		document.images[choixdeux].removeAttribute('onlick');
+		document.images[choixun].style.pointerEvents = 'none';
 		document.images[choixdeux].style.opacity = '0.3';
-		document.images[choixdeux].style.cursor = 'not-allowed';
+		document.images[choixdeux].style.pointerEvents = 'none';
 	} else {
 		//alert('Les 2 images sont différentes...');
 		document.images[choixun].src = dos;
+		document.images[choixun].style.pointerEvents = 'auto';
 		document.images[choixdeux].src = dos;
 		return;
 	}
