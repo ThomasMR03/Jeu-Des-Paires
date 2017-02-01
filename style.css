@@ -2,18 +2,25 @@ body {
 	background-color: #E1CE9A;
 }
 
+@font-face {
+	font-family: 'Painter';
+	src: url(http://www.dafont.com/fr/painter-2.font);
+}
+
 #titre {
+	font-family: 'Painter';
 	border: 1px solid black;
 	color: #FFFFFF;
 	border-radius: 10px;
 	text-align: center;
-	background-image: url(http://www.wallpapers-mania.org/images/Deco/fond-page-web-lissage-beige.jpg);
-	background-repeat: no-repeat;
-	padding: 50px 50px;
-	margin: 20px 185px 20px 150px;
+	background-image: url(http://lucief.fr/web/wp-content/uploads/2015/11/slider_fond_gris_mur.jpg);
+	padding: 10px 10px;
+	margin: 10px 10px;
 }
 
 p {
+	font-family: 'Painter';
+	font-size: 20px;
 	text-align: center;
 	font-weight: bold;
 	text-decoration: underline;
@@ -33,6 +40,7 @@ p {
 }
 
 .photo {
-	width: 150px;
-	height: 200px; 
+	width: 140px;
+	height: 140px;
+	margin: 5px;
 }
