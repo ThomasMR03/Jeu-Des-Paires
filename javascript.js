@@ -1,7 +1,8 @@
 var imgbase = ["img/chacha.jpg", "img/tofu.jpg", "img/coiff-bouftou.jpg", "img/glace.jpg", "img/bouftou-blanc.jpg",
- "img/cawotte.jpg", "img/bouftou.jpg", "img/mob-leponge.jpg", "img/ogrest.png", "img/croca.jpg"] // On définie les images
+ "img/cawotte.jpg", "img/bouftou.jpg", "img/mob-leponge.jpg", "img/ogrest.png", "img/croca.jpg", "img/gelano.jpg", "img/tronko.jpeg",
+ "img/Piou.jpg", "img/caline.jpeg"] // On définie les images
  var img = imgbase.concat(imgbase); // On copie le tableau pour avoir les images en double.
- var dos = 'img/dos.png'; // On définie l'image de dos.
+ var dos = 'img/dos.jpg'; // On définie l'image de dos.
 
 
   function random(tab){ //fonction qui permet de melanger les images
@@ -42,7 +43,7 @@ function choisir(carte) { //Choix des cartes quand l'user clique
 
 function afficherimage() { // Fonction pour afficher les images au chargement de la page
 	for (i=0; i<=img.length-1; i++) { // Boucle qui parcours le tableau d'images
-		document.getElementById('photo').innerHTML += '<img src="img/dos.png" class="photo" onclick="choisir('+i+')" draggable="false">' //A chaque tour, on écrit dans le HTML
+		document.getElementById('photo').innerHTML += '<img src="img/dos.jpg" class="photo" onclick="choisir('+i+')" draggable="false">' //A chaque tour, on écrit dans le HTML
 	}
 }
 
@@ -65,7 +66,7 @@ function verif() { // Vérifie si une paire a été faite
 		document.images[choixdeux].src = dos;
 		return;
 	}
-	if (paires==7) {
+	if (paires==14) {
 		document.getElementById('photo').style.display = 'block';
 		document.getElementById('photo').style.flexDirection = 'column';
 		document.getElementById('photo').innerHTML = '<h1> Vous avez gagné !</h1><br /><input type="button" class="restart" value="Recommencer" onClick="window.location.reload()">';
