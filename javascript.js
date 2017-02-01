@@ -20,8 +20,16 @@ var clique = 0; //Nombre de cliques
 var paires = 0; //Nombre de paires
 var choixun; //Choix de la 1ère carte
 var choixdeux; //Choix de la 2ème carte
+var norepeat = true; //Empeche le chrono de se répéter.
+
+//////////////////////////////////////////////////////////////////Choix des cartes\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 function choisir(carte) { //Choix des cartes quand l'user clique
+
+	if (norepeat == true) { //Empêche le chrono de se répèter.
+		timerID = setInterval("chrono()", 1000);
+		norepeat = false;
+	}
 
 	if (clique == 2) { //Au delà du deuxième clique
 		return; //On affiche rien
@@ -37,7 +45,7 @@ function choisir(carte) { //Choix des cartes quand l'user clique
 		clique = 2 //On passe le clique à 2
 		choixdeux = carte; //On attribue le numéro de la carte choisie au deuxième choix
 		document.images[carte].src = img[carte]; //Affiche l'image de la carte correspondant au choix
-		timer = setInterval("verif()", 500);
+		timer = setTimeout("verif()", 500);
 	}
 }
 
@@ -49,8 +57,9 @@ function afficherimage() { // Fonction pour afficher les images au chargement de
 
 afficherimage(); // Charge la fonction au chargement de la page
 
+//////////////////////////////////////////////////////////////////Vérifie les cartes\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 function verif() { // Vérifie si une paire a été faite
-	clearInterval(timer);
 	clique = 0;
 	if (img[choixdeux] == img[choixun]) {
 		paires++;
@@ -67,11 +76,14 @@ function verif() { // Vérifie si une paire a été faite
 		return;
 	}
 	if (paires==14) {
+		clearInterval(timerID); //Arrête le chrono quand toutes les paires sont trouvées.
 		document.getElementById('photo').style.display = 'block';
 		document.getElementById('photo').style.flexDirection = 'column';
 		document.getElementById('photo').innerHTML = '<h1> Vous avez gagné !</h1><br /><input type="button" class="restart" value="Recommencer" onClick="window.location.reload()">';
 	}
 }
+
+//////////////////////////////////////////////////////////////////Cartes Random\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 function random() { // Fonction pour mélanger les cartes au début
 	for(var i=img.length; i; i--) { //pour i=longueur totale du tableau, i toujours vrai(sup a zero), on decremente i(on lui enleve 1).
@@ -82,60 +94,22 @@ function random() { // Fonction pour mélanger les cartes au début
 	}
 }
 
-var startTime = 0
-var start = 0
-var end = 0
-var diff = 0
-var timerID = 0
-function chrono(){
-	end = new Date()
-	diff = end - start
-	diff = new Date(diff)
-	var msec = diff.getMilliseconds()
-	var sec = diff.getSeconds()
-	var min = diff.getMinutes()
-	var hr = diff.getHours()-1
-	if (min < 10){
-		min = "0" + min
+//////////////////////////////////////////////////////////////////Chrono\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+var timerID = 0;
+var sec = 0;
+var min = 0;
+
+function chrono(){ //Fonction chrono
+	if (sec<59){
+		sec++;
+		if(sec<10){
+			sec = "0" +sec;//Affiche 00 avant la première seconde
+		}
 	}
-	if (sec < 10){
-		sec = "0" + sec
+	else if (sec=59){
+		min++;
+		sec = "0" + 0;
 	}
-	if(msec < 10){
-		msec = "00" +msec
-	}
-	else if(msec < 100){
-		msec = "0" +msec
-	}
-	document.getElementById("chronotime").innerHTML = hr + ":" + min + ":" + sec + ":" + msec
-	timerID = setTimeout("chrono()", 10)
-}
-function chronoStart(){
-	document.chronoForm.startstop.value = "stop!"
-	document.chronoForm.startstop.onclick = chronoStop
-	document.chronoForm.reset.onclick = chronoReset
-	start = new Date()
-	chrono()
-}
-function chronoContinue(){
-	document.chronoForm.startstop.value = "stop!"
-	document.chronoForm.startstop.onclick = chronoStop
-	document.chronoForm.reset.onclick = chronoReset
-	start = new Date()-diff
-	start = new Date(start)
-	chrono()
-}
-function chronoReset(){
-	document.getElementById("chronotime").innerHTML = "0:00:00:000"
-	start = new Date()
-}
-function chronoStopReset(){
-	document.getElementById("chronotime").innerHTML = "0:00:00:000"
-	document.chronoForm.startstop.onclick = chronoStart
-}
-function chronoStop(){
-	document.chronoForm.startstop.value = "start!"
-	document.chronoForm.startstop.onclick = chronoContinue
-	document.chronoForm.reset.onclick = chronoStopReset
-	clearTimeout(timerID)
+	document.getElementById("chronotime").innerHTML = min + ":" + sec + "";
 }

@@ -7,9 +7,13 @@ body {
 	color: #FFFFFF;
 	border-radius: 10px;
 	text-align: center;
-	background-image: url(https://hearthstone.judgehype.com/screenshots/arkentass/news2015/484.jpg);
-	padding: 40px;
-	margin: 15px;
+	background-image: url(http://orig00.deviantart.net/eed5/f/2011/066/6/8/wakfupedia_card_by_kirakura-d3b4j78.jpg);
+	background-repeat: no-repeat;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	padding: 50px 50px;
+	margin: 20px 185px 20px 150px;
 }
 
 p {
