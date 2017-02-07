@@ -53,7 +53,7 @@ function verif() { // Vérifie si une paire a été faite
 		return;
 	}
 	if (paires==7) {
-		document.location.href = "./index.php?pseudo="+prompt("pseudo")+"&min="+min+"&sec="+sec;
+		document.location.href = "./index.php?pseudo="+prompt("Quel est votre pseudo")+"&min="+min+"&sec="+sec;
 	}
 }
 

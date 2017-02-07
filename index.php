@@ -27,6 +27,7 @@
             }
        } ?>];
     </script>
+
 </head>
 
     <body>
@@ -41,10 +42,14 @@
             
         
          <div id="photo">
-         <?php
-            for ($i=0; $i<=13; $i++) { // Boucle qui parcours le tableau d'images
-           echo '<img src="img/dos.jpg" class="photo" onclick="choisir('.$i.')" draggable="false">'; //A chaque tour, on écrit dans le HTML
-        }
+        <?php
+            if(isset($_GET["pseudo"],$_GET["min"],$_GET["sec"])){
+                echo "<h3>WIN! Voulez vous recommencer ? <a href='./index.php'> <button>RECOMMENCER</button> </a></h3>";
+            }else{
+                for($i=0; $i <= 13; $i++) { //Function afficher les images + onclick
+                echo '<img src="img/dos.jpg" class="photo" onclick="choisir('.$i.')" draggable="false">';
+                }
+            }    
         ?>
         </div>
         
