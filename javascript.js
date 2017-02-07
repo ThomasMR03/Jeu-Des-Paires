@@ -1,21 +1,4 @@
-var imgbase = ["img/chacha.jpg", "img/tofu.jpg", "img/coiff-bouftou.jpg", "img/glace.jpg", "img/bouftou-blanc.jpg",
- "img/cawotte.jpg", "img/bouftou.jpg", "img/mob-leponge.jpg", "img/ogrest.png", "img/croca.jpg", "img/gelano.jpg", "img/tronko.jpeg",
- "img/Piou.jpg", "img/caline.jpeg"] // On définie les images
- var img = imgbase.concat(imgbase); // On copie le tableau pour avoir les images en double.
- var dos = 'img/dos.jpg'; // On définie l'image de dos.
-
-
-  function random(tab){ //fonction qui permet de melanger les images
-    var j, x, i;
-    for(i = tab.length; i; i--) { //pour i=longueur totale du tableau, i toujours vrai(sup a zero), on decremente i(on lui enleve 1).
-        j = Math.floor(Math.random() * i);//Math.floor arondie a la valeur superieure,Math.random donne un nombre aleatoire (entre 0 et 1)le tout * i
-        x = tab[i-1];  //decale de 1 à l'interrieur du tableau(ex:si i=13 X deviendra lionne)
-        tab[i-1] = tab[j]; //si i= 13 tab 12(i-1) deviendras J(j=nombre aleatoire)
-        tab[j] = x; //j deviens X(pour cette exemple x=lionne)
-    }
-}
-random(img);
-
+var dos = 'img/dos.jpg'; // On définie l'image de dos.
 var clique = 0; //Nombre de cliques
 var paires = 0; //Nombre de paires
 var choixun; //Choix de la 1ère carte
@@ -49,13 +32,7 @@ function choisir(carte) { //Choix des cartes quand l'user clique
 	}
 }
 
-function afficherimage() { // Fonction pour afficher les images au chargement de la page
-	for (i=0; i<=img.length-1; i++) { // Boucle qui parcours le tableau d'images
-		document.getElementById('photo').innerHTML += '<img src="img/dos.jpg" class="photo" onclick="choisir('+i+')" draggable="false">' //A chaque tour, on écrit dans le HTML
-	}
-}
 
-afficherimage(); // Charge la fonction au chargement de la page
 
 //////////////////////////////////////////////////////////////////Vérifie les cartes\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -80,17 +57,6 @@ function verif() { // Vérifie si une paire a été faite
 		document.getElementById('photo').style.display = 'block';
 		document.getElementById('photo').style.flexDirection = 'column';
 		document.getElementById('photo').innerHTML = '<h1> Vous avez gagné !</h1><br /><input type="button" class="restart" value="Recommencer" onClick="window.location.reload()">';
-	}
-}
-
-//////////////////////////////////////////////////////////////////Cartes Random\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-function random() { // Fonction pour mélanger les cartes au début
-	for(var i=img.length; i; i--) { //pour i=longueur totale du tableau, i toujours vrai(sup a zero), on decremente i(on lui enleve 1).
-		j = Math.floor(Math.random() * i);//Math.floor arondie a la valeur superieure,Math.random donne un nombre aleatoire (entre 0 et 1)le tout * i
-		x = img[i-1];  //decale de 1 à l'interrieur du tableau(ex:si i=13 X deviendra lionne)
-		img[i-1] = img[j]; //si i= 13 img 12(i-1) deviendras J(j=nombre aleatoire)
-		img[j] = x; //j deviens X(pour cette exemple x=lionne)
 	}
 }
 
