@@ -52,11 +52,8 @@ function verif() { // Vérifie si une paire a été faite
 		document.images[choixdeux].src = dos;
 		return;
 	}
-	if (paires==14) {
-		clearInterval(timerID); //Arrête le chrono quand toutes les paires sont trouvées.
-		document.getElementById('photo').style.display = 'block';
-		document.getElementById('photo').style.flexDirection = 'column';
-		document.getElementById('photo').innerHTML = '<h1> Vous avez gagné !</h1><br /><input type="button" class="restart" value="Recommencer" onClick="window.location.reload()">';
+	if (paires==7) {
+		document.location.href = "./index.php?pseudo="+prompt("pseudo")+"&min="+min+"&sec="+sec;
 	}
 }
 

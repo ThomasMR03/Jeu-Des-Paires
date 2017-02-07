@@ -1,7 +1,6 @@
 <?php
     $imgbase = ["img/chacha.jpg", "img/tofu.jpg", "img/coiff-bouftou.jpg", "img/glace.jpg", "img/bouftou-blanc.jpg",
-    "img/cawotte.jpg", "img/bouftou.jpg", "img/mob-leponge.jpg", "img/ogrest.png", "img/croca.jpg", "img/gelano.jpg", "img/tronko.jpeg",
-    "img/Piou.jpg", "img/caline.jpeg"]; // On définie les images.
+    "img/cawotte.jpg", "img/bouftou.jpg", "img/chacha.jpg", "img/tofu.jpg", "img/coiff-bouftou.jpg", "img/glace.jpg", "img/bouftou-blanc.jpg", "img/cawotte.jpg", "img/bouftou.jpg"]; // On définie les images.
     $dos = 'img/dos.jpg';  // On définie l'image de dos.
     shuffle($imgbase); //On attribu un mélange au tableau à chaque refresh de la page.
     //var_dump($imgbase) //Console Log ^^
@@ -23,7 +22,7 @@
     <script type="text/javascript">
         var img = [<?php foreach ($imgbase as $casetabimg => $image){
             echo '"'.$image.'"';
-            if ($casetabimg != 27){
+            if ($casetabimg != 13){
                 echo ",";
             }
        } ?>];
@@ -43,7 +42,7 @@
         
          <div id="photo">
          <?php
-            for ($i=0; $i<=27; $i++) { // Boucle qui parcours le tableau d'images
+            for ($i=0; $i<=13; $i++) { // Boucle qui parcours le tableau d'images
            echo '<img src="img/dos.jpg" class="photo" onclick="choisir('.$i.')" draggable="false">'; //A chaque tour, on écrit dans le HTML
         }
         ?>
