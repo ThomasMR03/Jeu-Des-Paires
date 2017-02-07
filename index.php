@@ -6,11 +6,12 @@
     //var_dump($imgbase) //Console Log ^^
  ?>
     <?php
-    $nomDuJoueur = $_GET["pseudo"];
-    $tempsM = $_GET["min"];
-    $tempsS = $_GET["sec"];
+    
         if(isset($_GET["pseudo"],$_GET["min"],$_GET["sec"])){
             $victoire = true;
+            $nomDuJoueur = $_GET["pseudo"];
+            $tempsM = $_GET["min"];
+            $tempsS = $_GET["sec"];
         }else {
             $victoire = false;
         }
