@@ -5,7 +5,16 @@
     shuffle($imgbase); //On attribu un mélange au tableau à chaque refresh de la page.
     //var_dump($imgbase) //Console Log ^^
  ?>
-
+    <?php
+    $nomDuJoueur = $_GET["pseudo"];
+    $tempsM = $_GET["min"];
+    $tempsS = $_GET["sec"];
+        if(isset($_GET["pseudo"],$_GET["min"],$_GET["sec"])){
+            $victoire = true;
+        }else {
+            $victoire = false;
+        }
+    ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -43,13 +52,14 @@
         
          <div id="photo">
         <?php
-            if(isset($_GET["pseudo"],$_GET["min"],$_GET["sec"])){
+            if($victoire == true){
                 echo "<h3>WIN! Voulez vous recommencer ? <a href='./index.php'> <button>RECOMMENCER</button> </a></h3>";
+                echo "<h4>Bien jouer $nomDuJoueur, vous avez gagné en $tempsM : $tempsS !</h4>";
             }else{
                 for($i=0; $i <= 13; $i++) { //Function afficher les images + onclick
                 echo '<img src="img/dos.jpg" class="photo" onclick="choisir('.$i.')" draggable="false">';
                 }
-            }    
+            }
         ?>
         </div>
         
